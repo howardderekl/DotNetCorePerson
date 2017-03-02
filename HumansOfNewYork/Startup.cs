@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using HumansOfNewYork.Models;
 
 namespace HumansOfNewYork
 {
@@ -30,6 +31,9 @@ namespace HumansOfNewYork
         {
             // Add framework services.
             services.AddMvc();
+
+            // Add entity framework services
+            services.AddDbContext<HumansContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
