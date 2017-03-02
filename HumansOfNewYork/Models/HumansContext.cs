@@ -19,12 +19,13 @@ namespace HumansOfNewYork.Models
 
         public DbSet<Person> Persons { get; set; }
         public DbSet<Interest> Interests { get; set; }
+        public DbSet<Picture> Pictures { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
 
-            optionsBuilder.UseSqlServer(_config["ConectionStrings:HumansContextConnection"]);
+            optionsBuilder.UseSqlServer(_config["ConnectionStrings:HumansContextConnection"]);
         }
     }
 }

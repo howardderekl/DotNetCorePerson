@@ -32,6 +32,9 @@ namespace HumansOfNewYork
             // Add framework services.
             services.AddMvc();
 
+            // Add Configuration Service
+            services.AddSingleton(provider => Configuration);
+
             // Add entity framework services
             services.AddDbContext<HumansContext>();
         }
