@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using HumansOfNewYork.Models;
+using Newtonsoft.Json.Serialization;
 
 namespace HumansOfNewYork
 {
@@ -30,7 +31,10 @@ namespace HumansOfNewYork
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddMvc();
+            services.AddMvc()
+                .AddJsonOptions(config => {
+                    config.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                });
 
             // Add Configuration Service
             services.AddSingleton(provider => Configuration);
