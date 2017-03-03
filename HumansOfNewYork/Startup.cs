@@ -37,10 +37,18 @@ namespace HumansOfNewYork
 
             // Add entity framework services
             services.AddDbContext<HumansContext>();
+
+            services.AddScoped<IHumanRepository, HumanRepository>();
+
+            // Add Seed Data
+            services.AddTransient<HumansContextSeedData>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, 
+            IHostingEnvironment env, 
+            ILoggerFactory loggerFactory,
+            HumansContextSeedData seeder)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -69,6 +77,8 @@ namespace HumansOfNewYork
                     name: "spa-fallback",
                     defaults: new { controller = "Home", action = "Index" });
             });
+
+            seeder.EnsureSeedData().Wait();
         }
     }
 }

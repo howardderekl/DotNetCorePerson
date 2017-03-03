@@ -10,11 +10,11 @@ namespace HumansOfNewYork.Api.Controllers
     [Route("api/[controller]")]
     public class PersonController : Controller
     {
-        private HumansContext _context;
+        private IHumanRepository _repo;
 
-        public PersonController(HumansContext context)
+        public PersonController(IHumanRepository repo)
         {
-            _context = context;
+            _repo = repo;
         }
     }
 }
