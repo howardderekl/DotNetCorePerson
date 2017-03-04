@@ -1,0 +1,33 @@
+<h1>Humans list</h1>
+
+<p *ngIf="!persons"><em>Loading...</em></p>
+
+<table class='table' *ngIf="persons">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Street</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip</th>
+            <th>Interests</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let person of persons">
+            <td>{{ person.name }}</td>
+            <td>{{ person.age }}</td>
+            <td>{{ person.street }}</td>
+            <td>{{ person.city }}</td>
+            <td>{{ person.state }}</td>
+            <td>{{ person.zip }}</td>
+            <td *ngIf="person.interests">
+                <div *ngFor="let interest of person.interests">
+                    <span>{{ interest.description }}</span>
+                </div>
+            </td>
+            <td *ngIf="!person.interests">- None -</td>
+        </tr>
+    </tbody>
+</table>

@@ -20,7 +20,7 @@ namespace HumansOfNewYork.Api.Controllers
             _logger = logger;
         }
 
-        [HttpGet("api/person")]
+        [HttpGet("")]
         public IActionResult Get()
         {
             return Ok(_repo.GetAllPersons());            

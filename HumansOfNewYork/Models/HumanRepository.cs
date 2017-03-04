@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace HumansOfNewYork.Models
         {
             _logger.LogInformation("Getting All Persons from the Database");
 
-            return _context.Persons.ToList();
+            return _context.Persons.Include(i => i.Interests).ToList();
         }
     }
 }

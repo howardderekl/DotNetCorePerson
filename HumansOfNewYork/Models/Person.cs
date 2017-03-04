@@ -15,6 +15,8 @@ namespace HumansOfNewYork.Models
         public string Zip { get; set; }
         public int Age { get; set; }
         public ICollection<Interest> Interests { get; set; }
+
+        public int? PictureId { get; set; }
         public Picture Picture { get; set; }
     }
 }
