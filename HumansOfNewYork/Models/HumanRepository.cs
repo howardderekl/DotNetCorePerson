@@ -18,6 +18,11 @@ namespace HumansOfNewYork.Models
             _logger = logger;
         }
 
+        public void AddPerson(Person person)
+        {
+            _context.Add(person);
+        }
+
         public IEnumerable<Person> GetAllPersons()
         {
             _logger.LogInformation("Getting All Persons from the Database");
@@ -37,6 +42,11 @@ namespace HumansOfNewYork.Models
                 .Where(p => p.FirstName.Contains(name) || p.LastName.Contains(name))
                 .OrderBy(p => p.LastName).ThenBy(p => p.FirstName)
                 .ToList();
+        }
+
+        public async Task<bool> SaveChangesAsync()
+        {
+            return (await _context.SaveChangesAsync()) > 0;
         }
     }
 }

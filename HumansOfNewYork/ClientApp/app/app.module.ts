@@ -5,6 +5,7 @@ import { AppComponent } from './components/app/app.component'
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { HumansComponent } from './components/humans/humans.component';
+import { HumanDelayComponent } from './components/human-delay/humandelay.component';
 
 @NgModule({
     bootstrap: [ AppComponent ],
@@ -12,7 +13,8 @@ import { HumansComponent } from './components/humans/humans.component';
         AppComponent,
         NavMenuComponent,
         HomeComponent,
-        HumansComponent
+        HumansComponent,
+        HumanDelayComponent
     ],
     imports: [
         UniversalModule, // Must be first import. This automatically imports BrowserModule, HttpModule, and JsonpModule too.
@@ -20,6 +22,7 @@ import { HumansComponent } from './components/humans/humans.component';
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
             { path: 'humans', component: HumansComponent },
+            { path: 'human-delay', component: HumanDelayComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ]
