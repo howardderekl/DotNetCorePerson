@@ -20,7 +20,8 @@ namespace HumansOfNewYork.Models
             {
                 var superMan = new Person()
                 {
-                    Name = "Clark Kent",
+                    FirstName = "Clark",
+                    LastName = "Kent",
                     Age = 25,
                     Street = "123 Somewhere Street",
                     City = "New York",
@@ -40,7 +41,8 @@ namespace HumansOfNewYork.Models
 
                 var batMan = new Person()
                 {
-                    Name = "Bruce Wayne",
+                    FirstName = "Bruce",
+                    LastName = "Wayne",
                     Age = 35,
                     Street = "123 Somewhere Street",
                     City = "Gotham City",
@@ -60,7 +62,8 @@ namespace HumansOfNewYork.Models
 
                 var spiderMan = new Person()
                 {
-                    Name = "Peter Parker",
+                    FirstName = "Peter",
+                    LastName = "Parker",
                     Age = 25,
                     Street = "127 Somewhere Street",
                     City = "New York",

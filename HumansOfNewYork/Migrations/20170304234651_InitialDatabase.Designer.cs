@@ -8,8 +8,8 @@ using HumansOfNewYork.Models;
 namespace HumansOfNewYork.Migrations
 {
     [DbContext(typeof(HumansContext))]
-    [Migration("20170304192114_FixPictureRelationship")]
-    partial class FixPictureRelationship
+    [Migration("20170304234651_InitialDatabase")]
+    partial class InitialDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -42,11 +42,11 @@ namespace HumansOfNewYork.Migrations
 
                     b.Property<string>("City");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
 
                     b.Property<int?>("PictureId");
-
-                    b.Property<int?>("PictureId1");
 
                     b.Property<string>("State");
 
@@ -56,7 +56,7 @@ namespace HumansOfNewYork.Migrations
 
                     b.HasKey("PersonId");
 
-                    b.HasIndex("PictureId1");
+                    b.HasIndex("PictureId");
 
                     b.ToTable("Persons");
                 });
@@ -67,8 +67,6 @@ namespace HumansOfNewYork.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<byte[]>("Original");
-
-                    b.Property<int>("PersonId");
 
                     b.HasKey("PictureId");
 
@@ -87,7 +85,7 @@ namespace HumansOfNewYork.Migrations
                 {
                     b.HasOne("HumansOfNewYork.Models.Picture", "Picture")
                         .WithMany()
-                        .HasForeignKey("PictureId1");
+                        .HasForeignKey("PictureId");
                 });
         }
     }

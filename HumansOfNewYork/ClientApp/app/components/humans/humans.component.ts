@@ -16,7 +16,8 @@ export class HumansComponent {
 }
 
 interface Person {
-    name: string;
+    firstName: string;
+    lastName: string;
     age: number;
     street: string;
     city: string;

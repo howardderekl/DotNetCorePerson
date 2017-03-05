@@ -22,7 +22,21 @@ namespace HumansOfNewYork.Models
         {
             _logger.LogInformation("Getting All Persons from the Database");
 
-            return _context.Persons.Include(i => i.Interests).ToList();
+            return _context.Persons
+                .Include(i => i.Interests)
+                .OrderBy(p => p.LastName).ThenBy(p => p.FirstName)
+                .ToList();
+        }
+
+        public IEnumerable<Person> GetPersonsByFirstLastName(string name)
+        {
+            _logger.LogInformation("Getting Persons from the Database Matching by First Name or Last Name");
+
+            return _context.Persons
+                .Include(p => p.Interests)
+                .Where(p => p.FirstName.Contains(name) || p.LastName.Contains(name))
+                .OrderBy(p => p.LastName).ThenBy(p => p.FirstName)
+                .ToList();
         }
     }
 }

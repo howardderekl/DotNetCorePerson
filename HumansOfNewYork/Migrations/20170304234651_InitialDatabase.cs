@@ -10,6 +10,19 @@ namespace HumansOfNewYork.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Pictures",
+                columns: table => new
+                {
+                    PictureId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Original = table.Column<byte[]>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Pictures", x => x.PictureId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Persons",
                 columns: table => new
                 {
@@ -17,7 +30,9 @@ namespace HumansOfNewYork.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Age = table.Column<int>(nullable: false),
                     City = table.Column<string>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
+                    FirstName = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true),
+                    PictureId = table.Column<int>(nullable: true),
                     State = table.Column<string>(nullable: true),
                     Street = table.Column<string>(nullable: true),
                     Zip = table.Column<string>(nullable: true)
@@ -25,6 +40,12 @@ namespace HumansOfNewYork.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Persons", x => x.PersonId);
+                    table.ForeignKey(
+                        name: "FK_Persons_Pictures_PictureId",
+                        column: x => x.PictureId,
+                        principalTable: "Pictures",
+                        principalColumn: "PictureId",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -47,36 +68,15 @@ namespace HumansOfNewYork.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Pictures",
-                columns: table => new
-                {
-                    PictureId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Original = table.Column<byte[]>(nullable: true),
-                    PersonId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Pictures", x => x.PictureId);
-                    table.ForeignKey(
-                        name: "FK_Pictures_Persons_PersonId",
-                        column: x => x.PersonId,
-                        principalTable: "Persons",
-                        principalColumn: "PersonId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_Interests_PersonId",
                 table: "Interests",
                 column: "PersonId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Pictures_PersonId",
-                table: "Pictures",
-                column: "PersonId",
-                unique: true);
+                name: "IX_Persons_PictureId",
+                table: "Persons",
+                column: "PictureId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -85,10 +85,10 @@ namespace HumansOfNewYork.Migrations
                 name: "Interests");
 
             migrationBuilder.DropTable(
-                name: "Pictures");
+                name: "Persons");
 
             migrationBuilder.DropTable(
-                name: "Persons");
+                name: "Pictures");
         }
     }
 }

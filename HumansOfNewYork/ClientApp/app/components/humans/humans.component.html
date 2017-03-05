@@ -5,7 +5,8 @@
 <table class='table' *ngIf="persons">
     <thead>
         <tr>
-            <th>Name</th>
+            <th>First</th>
+            <th>Last</th>
             <th>Age</th>
             <th>Street</th>
             <th>City</th>
@@ -16,7 +17,8 @@
     </thead>
     <tbody>
         <tr *ngFor="let person of persons">
-            <td>{{ person.name }}</td>
+            <td>{{ person.firstName }}</td>
+            <td>{{ person.lastName }}</td>
             <td>{{ person.age }}</td>
             <td>{{ person.street }}</td>
             <td>{{ person.city }}</td>
