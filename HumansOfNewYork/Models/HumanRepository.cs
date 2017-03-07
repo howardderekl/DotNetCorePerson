@@ -29,6 +29,7 @@ namespace HumansOfNewYork.Models
 
             return _context.Persons
                 .Include(i => i.Interests)
+                .Include(p => p.Picture)
                 .OrderBy(p => p.LastName).ThenBy(p => p.FirstName)
                 .ToList();
         }
@@ -39,6 +40,7 @@ namespace HumansOfNewYork.Models
 
             return _context.Persons
                 .Include(p => p.Interests)
+                .Include(p => p.Picture)
                 .Where(p => p.FirstName.Contains(name) || p.LastName.Contains(name))
                 .OrderBy(p => p.LastName).ThenBy(p => p.FirstName)
                 .ToList();

@@ -36,6 +36,14 @@ namespace HumansOfNewYork.Models
                     }
                 };
 
+                var superImage = new Picture()
+                {
+                    ImageUrl = "https://upload.wikimedia.org/wikipedia/en/e/eb/SupermanRoss.png"
+                };
+
+                _context.Pictures.Add(superImage);
+                superMan.Picture = superImage;
+
                 _context.Persons.Add(superMan);
                 _context.Interests.AddRange(superMan.Interests);
 
@@ -57,6 +65,14 @@ namespace HumansOfNewYork.Models
                     }
                 };
 
+                var batImage = new Picture()
+                {
+                    ImageUrl = "https://upload.wikimedia.org/wikipedia/en/1/17/Batman-BenAffleck.jpg"
+                };
+
+                _context.Pictures.Add(batImage);
+                batMan.Picture = batImage;
+
                 _context.Persons.Add(batMan);
                 _context.Interests.AddRange(batMan.Interests);
 
@@ -77,6 +93,14 @@ namespace HumansOfNewYork.Models
                         new Interest() { Description = "Teasing Antman" }
                     }
                 };
+
+                var spiderImage = new Picture()
+                {
+                    ImageUrl = "https://upload.wikimedia.org/wikipedia/en/0/0c/Spiderman50.jpg"
+                };
+
+                _context.Pictures.Add(spiderImage);
+                spiderMan.Picture = spiderImage;
 
                 _context.Persons.Add(spiderMan);
                 _context.Interests.AddRange(spiderMan.Interests);

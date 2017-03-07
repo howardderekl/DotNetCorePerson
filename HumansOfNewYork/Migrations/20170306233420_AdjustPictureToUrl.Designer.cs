@@ -8,9 +8,10 @@ using HumansOfNewYork.Models;
 namespace HumansOfNewYork.Migrations
 {
     [DbContext(typeof(HumansContext))]
-    partial class HumansContextModelSnapshot : ModelSnapshot
+    [Migration("20170306233420_AdjustPictureToUrl")]
+    partial class AdjustPictureToUrl
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")

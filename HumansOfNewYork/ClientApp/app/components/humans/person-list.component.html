@@ -1,0 +1,60 @@
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Persons List
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-2">Filter By:</div>
+            <div class="col-md-4">
+                <input type="text" 
+                       [(ngModel)]='listFilter'/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Filtered by: {{listFilter}}</h3>
+            </div>
+        </div>
+        <div class="row" *ngIf="!persons">
+            <div class="col-md-6"><em>Loading...</em></div>
+        </div>
+        <div class="table-responsive">
+            <table class='table' *ngIf="persons">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Street</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Zip</th>
+                        <th>Interests</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let person of persons | personFilter:listFilter">
+                        <td><img [src]='person.picture.imageUrl'
+                                 [title]='person.lastname'
+                                 [style.width.px]='imageWidth'
+                                 [style.margin.px]='imageMargin' /></td>
+                        <td>{{ person.fullName }}</td>
+                        <td>{{ person.age }}</td>
+                        <td>{{ person.street }}</td>
+                        <td>{{ person.city }}</td>
+                        <td>{{ person.state }}</td>
+                        <td>{{ person.zip }}</td>
+                        <td *ngIf="person.interests">
+                            <div *ngFor="let interest of person.interests">
+                                <span>{{ interest.description }}</span>
+                            </div>
+                        </td>
+                        <td *ngIf="!person.interests">- None -</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+

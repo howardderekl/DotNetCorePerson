@@ -8,9 +8,10 @@ using HumansOfNewYork.Models;
 namespace HumansOfNewYork.Migrations
 {
     [DbContext(typeof(HumansContext))]
-    partial class HumansContextModelSnapshot : ModelSnapshot
+    [Migration("20170307034711_AddFullnameReadOnly")]
+    partial class AddFullnameReadOnly
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")

@@ -9,7 +9,7 @@ namespace HumansOfNewYork.Models
     public class Picture
     {
         public int PictureId { get; set; }
-        public byte[] Original { get; set; }
+        public string ImageUrl { get; set; }
 
     }
 }
