@@ -63,25 +63,5 @@ namespace HumansOfNewYork.Api.Controllers
                 return BadRequest($"Error getting the list of Persons by name");
             }
         }
-
-        [HttpPost("")]
-        public async Task<IActionResult> Post([FromBody]Person thePerson)
-        {
-            if (ModelState.IsValid)
-            {
-                _repo.AddPerson(thePerson);
-
-                if (await _repo.SaveChangesAsync())
-                {
-                    return Created($"api/person/{thePerson.FirstName}", thePerson);
-                }
-                else
-                    return BadRequest("Failed to save changes to the database");
-
-            }
-
-            return BadRequest(ModelState);
-            
-        }
     }
 }

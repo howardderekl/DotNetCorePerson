@@ -8,21 +8,21 @@ using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace HumansOfNewYork.Test.Web
+namespace HumansOfNewYork.Test.Controllers.Web
 {
     public class HomeControllerTests
     {
+        private readonly Mock<IHumanRepository> _mockRepo;
+
         public HomeControllerTests()
         {
+            _mockRepo = new Mock<IHumanRepository>();
         }
 
         [Fact(DisplayName = "Index should return default view")]
         public void Index_should_return_default_view()
         {
-            // Arrange
-            var mockRepo = new Mock<IHumanRepository>();
-
-            var controller = new HomeController(mockRepo.Object);
+            var controller = new HomeController(_mockRepo.Object);
             var viewResult = (ViewResult)controller.Index();
             var viewName = viewResult.ViewName;
 
@@ -32,10 +32,7 @@ namespace HumansOfNewYork.Test.Web
         [Fact(DisplayName = "Error should return error view")]
         public void Index_should_return_error_view()
         {
-            // Arrange
-            var mockRepo = new Mock<IHumanRepository>();
-
-            var controller = new HomeController(mockRepo.Object);
+            var controller = new HomeController(_mockRepo.Object);
             var viewResult = (ViewResult)controller.Error();
             var viewName = viewResult.ViewName;
 
