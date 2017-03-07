@@ -6,6 +6,7 @@ import { AppComponent } from './components/app/app.component'
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { PersonListComponent } from './components/humans/person-list.component';
+import { HumanDelayComponent } from './components/human-delay/humandelay.component';
 import { PersonFilterPipe } from './components/humans/person-filter.pipe';
 
 @NgModule({
@@ -15,6 +16,7 @@ import { PersonFilterPipe } from './components/humans/person-filter.pipe';
         NavMenuComponent,
         HomeComponent,
         PersonListComponent,
+        HumanDelayComponent,
         PersonFilterPipe
     ],
     imports: [
@@ -24,6 +26,7 @@ import { PersonFilterPipe } from './components/humans/person-filter.pipe';
             { path: '', redirectTo: 'home', pathMatch: 'full' },
             { path: 'home', component: HomeComponent },
             { path: 'humans', component: PersonListComponent },
+            { path: 'human-delay', component: HumanDelayComponent },
             { path: '**', redirectTo: 'home' }
         ])
     ]
